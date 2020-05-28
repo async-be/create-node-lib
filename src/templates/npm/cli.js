@@ -53,7 +53,7 @@ module.exports = function* ({ answers, ask, tasks }) {
     name: "npm_description",
     type: "input",
     message: "Package description",
-    default: answers.current["npm-name"],
+    default: answers.current["npm_name"],
   });
   tasks.push((c, a) => {
     c.files.packageJson.setContent(c => ({
@@ -68,6 +68,9 @@ module.exports = function* ({ answers, ask, tasks }) {
     message: "Package keywords (comma separated)",
   });
   tasks.push((c, a) => {
+    if (a.npm_keywords.length <= 0) {
+      return;
+    }
     c.files.packageJson.setContent(c => ({
       ...c,
       keywords: a.npm_keywords.split(",").map(v => v.trim()),

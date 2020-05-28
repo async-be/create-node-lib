@@ -33,7 +33,33 @@ const fileJson = path => {
   };
 };
 
-const fileRaw = path => {};
+const fileRaw = path => {
+  let _path = path;
+  let _content = {};
+
+  const getPath = () => _path;
+  const setPath = p => (_path = p);
+
+  const getContent = () => _content;
+  const setContent = c => {
+    _content =
+      Object.prototype.toString.call(c) === "[object Function]"
+        ? c(_content)
+        : c;
+  };
+
+  const writeOnDisk = () => {
+    fs.writeFileSync(_path, _content, { mode: "777" });
+  };
+
+  return {
+    getPath,
+    setPath,
+    getContent,
+    setContent,
+    writeOnDisk,
+  };
+};
 
 const file = (path, contentFormat = FILE_FORMAT.JSON) => {
   switch (contentFormat) {
