@@ -1,5 +1,5 @@
-const { file, FILE_FORMAT } = require("./../../lib/file");
-const licenses = require("./licenses");
+const { file, FILE_FORMAT } = require("../lib/file");
+const licenses = require("../ressources/licenses");
 const path = require("path");
 
 module.exports = function* ({ answers, ask, tasks }) {

@@ -1,8 +1,8 @@
-const globals = require("./../../lib/globals");
+const globals = require("../lib/globals");
 const validateNpmName = require("validate-npm-package-name");
 const fs = require("fs");
 const path = require("path");
-const { file, FILE_FORMAT } = require("./../../lib/file");
+const { file, FILE_FORMAT } = require("../lib/file");
 
 module.exports = function* ({ answers, ask, tasks }) {
   yield ask({
@@ -65,7 +65,7 @@ module.exports = function* ({ answers, ask, tasks }) {
   yield ask({
     name: "npm_keywords",
     type: "input",
-    message: "Package keywords (comma separated)",
+    message: "Package keywords, comma separated",
   });
   tasks.push((c, a) => {
     if (a.npm_keywords.length <= 0) {

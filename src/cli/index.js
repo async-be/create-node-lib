@@ -1,6 +1,6 @@
-const { navigateQuestionsGenerator } = require("./lib/cliUtils");
-const npmCli = require("./templates/npm/cli");
-const licenseCli = require("./templates/license/cli");
+const { navigateQuestionsGenerator } = require("../lib/cliUtils");
+const npmCli = require("./npm");
+const licenseCli = require("./license");
 
 function* questionsGenerator(opts) {
   yield* npmCli(opts);
